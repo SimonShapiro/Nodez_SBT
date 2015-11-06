@@ -1,0 +1,133 @@
+<graphml xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns
+           http://www.yworks.com/xml/schema/graphml/1.1/ygraphml.xsd" xmlns:y="http://www.yworks.com/xml/graphml" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://graphml.graphdrawing.org/xmlns">
+    <key id="d0" for="node" yfiles.type="nodegraphics"/>
+    <key id="d1" for="edge" yfiles.type="edgegraphics"/>
+    <graph id="G" edgedefault="directed">
+        <node id="@-427861799">
+            <data key="d0">
+                <y:ShapeNode selected="false">
+                    <y:Geometry x="170.5" y="-15.0" width="59.0" height="30.0"/>
+                    <y:Fill color="#ffcc00" transparent="false"/>
+                    <y:BorderStyle type="line" width="1.0" color="#000000"/>
+                    <y:NodeLabel>Capital Plan Ad-hoc Output</y:NodeLabel>
+                    <y:Shape type="ellipse"/>
+                </y:ShapeNode>
+            </data>
+        </node><node id="@261213151">
+        <data key="d0">
+            <y:ShapeNode selected="false">
+                <y:Geometry x="170.5" y="-15.0" width="59.0" height="30.0"/>
+                <y:Fill color="#ffcc00" transparent="false"/>
+                <y:BorderStyle type="line" width="1.0" color="#000000"/>
+                <y:NodeLabel>Capital Plan Output</y:NodeLabel>
+                <y:Shape type="ellipse"/>
+            </y:ShapeNode>
+        </data>
+    </node><node id="@219609894">
+        <data key="d0">
+            <y:ShapeNode selected="false">
+                <y:Geometry x="170.5" y="-15.0" width="59.0" height="30.0"/>
+                <y:Fill color="#ccccff" transparent="false"/>
+                <y:BorderStyle type="line" width="1.0" color="#000000"/>
+                <y:NodeLabel>Cyrus</y:NodeLabel>
+                <y:Shape type="rectangle"/>
+            </y:ShapeNode>
+        </data>
+    </node><node id="@1534048611">
+        <data key="d0">
+            <y:ShapeNode selected="false">
+                <y:Geometry x="170.5" y="-15.0" width="59.0" height="30.0"/>
+                <y:Fill color="#ccccff" transparent="false"/>
+                <y:BorderStyle type="line" width="1.0" color="#000000"/>
+                <y:NodeLabel>Optimus</y:NodeLabel>
+                <y:Shape type="rectangle"/>
+            </y:ShapeNode>
+        </data>
+    </node><node id="@790663826">
+        <data key="d0">
+            <y:ShapeNode selected="false">
+                <y:Geometry x="170.5" y="-15.0" width="59.0" height="30.0"/>
+                <y:Fill color="#ffcc00" transparent="false"/>
+                <y:BorderStyle type="line" width="1.0" color="#000000"/>
+                <y:NodeLabel>Capital Plan Input Templates</y:NodeLabel>
+                <y:Shape type="ellipse"/>
+            </y:ShapeNode>
+        </data>
+    </node><node id="@-132459719">
+        <data key="d0">
+            <y:ShapeNode selected="false">
+                <y:Geometry x="170.5" y="-15.0" width="59.0" height="30.0"/>
+                <y:Fill color="#ccccff" transparent="false"/>
+                <y:BorderStyle type="line" width="1.0" color="#000000"/>
+                <y:NodeLabel>Microsoft Excel</y:NodeLabel>
+                <y:Shape type="rectangle"/>
+            </y:ShapeNode>
+        </data>
+    </node><node id="@-1813173225">
+        <data key="d0">
+            <y:ShapeNode selected="false">
+                <y:Geometry x="170.5" y="-15.0" width="59.0" height="30.0"/>
+                <y:Fill color="#ffcc00" transparent="false"/>
+                <y:BorderStyle type="line" width="1.0" color="#000000"/>
+                <y:NodeLabel>Capital Plan Automated Input</y:NodeLabel>
+                <y:Shape type="ellipse"/>
+            </y:ShapeNode>
+        </data>
+    </node>
+        <edge id="@1431363715" source="@219609894" target="@-427861799">
+            <data key="d1">
+                <y:PolyLineEdge>
+                    <y:LineStyle type="line" width="1.0" color="#000000"/>
+                    <y:Arrows source="none" target="standard"/>
+                    <y:EdgeLabel>PRODUCES</y:EdgeLabel>
+                    <y:BendStyle smoothed="false"/>
+                </y:PolyLineEdge>
+            </data>
+        </edge><edge id="@299513302" source="@790663826" target="@219609894">
+        <data key="d1">
+            <y:PolyLineEdge>
+                <y:LineStyle type="line" width="1.0" color="#ff0000"/>
+                <y:Arrows source="none" target="standard"/>
+                <y:EdgeLabel>CONSUMED BY</y:EdgeLabel>
+                <y:BendStyle smoothed="false"/>
+            </y:PolyLineEdge>
+        </data>
+    </edge><edge id="@1785071731" source="@-132459719" target="@790663826">
+        <data key="d1">
+            <y:PolyLineEdge>
+                <y:LineStyle type="line" width="1.0" color="#000000"/>
+                <y:Arrows source="none" target="standard"/>
+                <y:EdgeLabel>PRODUCES</y:EdgeLabel>
+                <y:BendStyle smoothed="false"/>
+            </y:PolyLineEdge>
+        </data>
+    </edge><edge id="@-894252390" source="@1534048611" target="@-1813173225">
+        <data key="d1">
+            <y:PolyLineEdge>
+                <y:LineStyle type="line" width="1.0" color="#000000"/>
+                <y:Arrows source="none" target="standard"/>
+                <y:EdgeLabel>PRODUCES</y:EdgeLabel>
+                <y:BendStyle smoothed="false"/>
+            </y:PolyLineEdge>
+        </data>
+    </edge><edge id="@-1016509693" source="@219609894" target="@261213151">
+        <data key="d1">
+            <y:PolyLineEdge>
+                <y:LineStyle type="line" width="1.0" color="#000000"/>
+                <y:Arrows source="none" target="standard"/>
+                <y:EdgeLabel>PRODUCES</y:EdgeLabel>
+                <y:BendStyle smoothed="false"/>
+            </y:PolyLineEdge>
+        </data>
+    </edge><edge id="@-549683744" source="@-1813173225" target="@219609894">
+        <data key="d1">
+            <y:PolyLineEdge>
+                <y:LineStyle type="line" width="1.0" color="#ff0000"/>
+                <y:Arrows source="none" target="standard"/>
+                <y:EdgeLabel>CONSUMED BY</y:EdgeLabel>
+                <y:BendStyle smoothed="false"/>
+            </y:PolyLineEdge>
+        </data>
+    </edge>
+    </graph>
+</graphml>
