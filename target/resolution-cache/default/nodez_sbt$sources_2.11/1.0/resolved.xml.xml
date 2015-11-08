@@ -4,7 +4,7 @@
 		module="nodez_sbt$sources_2.11"
 		revision="1.0"
 		status="integration"
-		publication="20151104114251"
+		publication="20151107102831"
 	/>
 	<configurations>
 		<conf name="default" visibility="public" description=""/>

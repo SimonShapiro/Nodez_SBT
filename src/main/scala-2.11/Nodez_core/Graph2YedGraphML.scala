@@ -1,66 +1,62 @@
 package Nodez_core
 
 import scala.xml.Elem
-import scala.collection.immutable.HashMap
+import scala.collection.mutable.HashMap
 
 /**
  * Created by simonshapiro on 05/11/15.
  */
 
+case class Graph2YedGraphML(g: Graph, nodeGraphControls: HashMap[String, archNodes => Any] = null, edgeGraphControls: HashMap[String, archEdges => Any] = null) {
 
-
-case class Graph2YedGraphML(g: Graph,
-                            eReversedFN: (archEdges) => (Boolean, String),
-                            eColourFN: (archEdges) => String,
-                            nColourFN: (archNodes) => String,
-                            nShapeFunction: (archNodes) => String) {
-
-  val colourTable = HashMap("black" -> "#000000",
+  private val colourTable = HashMap("black" -> "#000000",
                             "red"   -> "#ff0000",
                             "grey"  -> "#ccccff",
                             "yellow"-> "#ffcc00")
-  def getColourFromTable(c: String): String = {
-    val DEFAULT_COLOUR = "#ffffff"
+
+  private val DEFAULT_COLOUR = "#555555"
+  private val DEFAULT_SHAPE = "ellipse"
+
+  private def getColourFromTable(c: String): String = {
     if(colourTable.contains(c)) colourTable(c)
     else DEFAULT_COLOUR
   }
 
-  def node2YedGraphML(n: archNodes): Elem = {
+  private def node2YedGraphML(n: archNodes): Elem = {
+    val ccode = if (nodeGraphControls.contains("node colour")) nodeGraphControls("node colour")(n) else DEFAULT_COLOUR
+    val col = getColourFromTable(ccode.toString)
+    val shape = if (nodeGraphControls.contains("node shape")) nodeGraphControls("node shape")(n) else DEFAULT_SHAPE
     <node id={"@" + n.hashCode.toString}>
       <data key="d0">
         <y:ShapeNode selected="false">
           <y:Geometry x="170.5" y="-15.0" width="59.0" height="30.0"/>
-          <y:Fill color={getColourFromTable(nColourFN(n))} transparent="false"/>
+          <y:Fill color={col} transparent="false"/>
           <y:BorderStyle type="line" width="1.0" color="#000000"/>
           <y:NodeLabel>{n.name}</y:NodeLabel>
-          <y:Shape type={nShapeFunction(n)}/>
+          <y:Shape type={shape.toString}/>
         </y:ShapeNode>
       </data>
     </node>
   }
 
-  case class edgeControl(
-                          reversed: Boolean = false,
-                          colour: String = "#ff0000" ) {
-  }
-
-  def edge2YedGraphML(e: archEdges) = {
+  private def edge2YedGraphML(e: archEdges) = {
+    val reversed = if (edgeGraphControls.contains("edge direction reversed")) edgeGraphControls("edge direction reversed")(e) else (false,"")
+    val cCode = if (edgeGraphControls.contains("edge colour")) edgeGraphControls("edge colour")(e) else DEFAULT_COLOUR
+    val eColour = getColourFromTable((cCode).toString)
     //is there coding to do the display in reverse on some items?
     <edge id={"@" + e.hashCode.toString}
-          source={if (eReversedFN(e)._1) "@" + e.toNode.hashCode.toString else "@" + e.fromNode.hashCode.toString}
-          target={if (eReversedFN(e)._1) "@" + e.fromNode.hashCode.toString else "@" + e.toNode.hashCode.toString}>
+          source={if (reversed.asInstanceOf[(Boolean,String)]._1) "@" + e.toNode.hashCode.toString else "@" + e.fromNode.hashCode}
+          target={if (reversed.asInstanceOf[(Boolean,String)]._1) "@" + e.fromNode.hashCode.toString else "@" + e.toNode.hashCode}>
       <data key="d1">
         <y:PolyLineEdge>
-          <y:LineStyle type="line" width="1.0" color={getColourFromTable(eColourFN(e))}/>
+          <y:LineStyle type="line" width="1.0" color={eColour.toString}/>
           <y:Arrows source="none" target="standard"/>
-          <y:EdgeLabel>{if (eReversedFN(e)._1) eReversedFN(e)._2 else e.getClass.toString.split('.').last.split('_')(1)}</y:EdgeLabel>
+          <y:EdgeLabel>{if (reversed.asInstanceOf[(Boolean,String)]._1) reversed.asInstanceOf[(Boolean,String)]._2 else e.getClass.toString.split('.').last.split('_')(1)}</y:EdgeLabel>
           <y:BendStyle smoothed="false"/>
         </y:PolyLineEdge>
       </data>
     </edge>
   }
-
-  val edgeDefault = edgeControl()
 
   def asXML =
     <graphml xmlns="http://graphml.graphdrawing.org/xmlns"

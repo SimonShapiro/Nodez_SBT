@@ -9,7 +9,7 @@ import scala.collection.mutable.ArrayBuffer
  */
 
 
-case class Graph(author: String=null) {
+case class Graph(author: String=null) extends GraphInterface {
   val nodes = new mutable.HashMap[String,archNodes]
   val edges = new mutable.HashMap[String,archEdges]
 

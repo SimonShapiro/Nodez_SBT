@@ -4,7 +4,7 @@
 		module="nodez_sbt_2.11"
 		revision="1.0"
 		status="integration"
-		publication="20151104114249"
+		publication="20151107102821"
 	>
 		<description>
 		Nodez_SBT
@@ -33,5 +33,7 @@
 		<dependency org="org.scala-lang" name="scala-compiler" rev="2.11.7" conf="scala-tool->default,optional(default)"/>
 		<dependency org="org.scala-lang" name="scala-library" rev="2.11.7" conf="scala-tool->default,optional(default);compile->default(compile)"/>
 		<dependency org="org.scala-lang.modules" name="scala-xml_2.11" rev="1.0.4" conf="compile->default(compile)"/>
+		<dependency org="org.neo4j" name="neo4j" rev="2.3.0" conf="compile->default(compile)"/>
+		<dependency org="com.typesafe.play" name="play_2.11" rev="2.5.0-M1" conf="compile->default(compile)"/>
 	</dependencies>
 </ivy-module>
