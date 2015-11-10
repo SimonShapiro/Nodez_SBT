@@ -2,7 +2,9 @@ package Nodez_generated.Nodez_node_classes
 
 import Nodez_core.archNodes
 import Nodez_generated.Nodez_edge_classes._
+import play.api.libs.json.{Json, JsValue}
 
+import scala.collection.mutable
 import scala.collection.mutable.ArrayBuffer
 
 /**
@@ -16,5 +18,25 @@ case class Function(
     outboundEdges += e
     s.inboundEdges += e
     e
+  }
+  override def toString: String = {
+    """Function(
+      |     name =  "%s"
+      |     )
+    """
+      .stripMargin.format(name)
+  }
+  def toJson: JsValue = {
+    Json.parse("""{
+                 |    "TYPE" : "Function",
+                 |    "name" : "%s"
+                 |}
+               """.stripMargin.format(name))
+  }
+  def toHashMap = {
+    val properties = new mutable.HashMap[String, Any]
+    properties("name") = name
+    properties("TYPE") = getClass.toString.split('.').last
+    properties
   }
 }

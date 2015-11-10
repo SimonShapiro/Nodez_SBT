@@ -72,15 +72,12 @@ case class System(
     """
     .stripMargin.format(name,version,description)
   }
-  def toJson = {
-    Json.parse("""{
-      |    "TYPE" : "System",
-      |    "name" : "%s",
-      |    "properties" : {
-      |                  "version" : "%s",
-      |                  "description" : "%s"
-      |                   }
-      |}
-    """.stripMargin.format(name,version,description))
+  def toHashMap = {
+    val properties = new mutable.HashMap[String, Any]
+    properties("name") = name
+    properties("TYPE") = getClass.toString.split('.').last
+    properties("version") = version
+    properties("description") = description
+    properties
   }
 }

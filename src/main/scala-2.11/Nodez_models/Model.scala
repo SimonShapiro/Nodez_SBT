@@ -51,11 +51,11 @@ class Model() {
     model <=> (cyrus CONSUMES capplanInTemplate)
     model <=> (cyrus PRODUCES capplanOut)
     model <=> (cyrus PRODUCES capplanOutAdHoc)
-//    model <=> (cyrus CONNECTS excel)
+//    model <=> (cyrus CONNECTS cyrus)
 
   println(optimus)
-  println(optimus.toJson.getClass)
-  val cl = System() fromJson optimus.toJson
+//  println(optimus.toJson.getClass)
+//  val cl = System() fromJson optimus.toJson
   val ar = System() <-- (version = "fred", name = "bob")
-  println(cl)
+//  println(cl)
 }

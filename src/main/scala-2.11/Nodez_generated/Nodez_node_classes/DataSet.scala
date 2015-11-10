@@ -6,6 +6,9 @@ package Nodez_generated.Nodez_node_classes
 
 import Nodez_core.archNodes
 import Nodez_generated.Nodez_edge_classes._
+import play.api.libs.json.{Json, JsValue}
+
+import scala.collection.mutable
 
 
 case class DataSet(
@@ -13,5 +16,21 @@ case class DataSet(
              version: String = null,
              description: String = null
                ) extends archNodes {
-
+  override def toString: String = {
+    """DataSet(
+      |     name =  "%s",
+      |     version = "%s",
+      |     description = "%s"
+      |     )
+    """
+    .stripMargin.format(name,version,description)
+  }
+  def toHashMap = {
+    val properties = new mutable.HashMap[String, Any]
+    properties("name") = name
+    properties("TYPE") = getClass.toString.split('.').last
+    properties("version") = version
+    properties("description") = description
+    properties
+  }
 }
