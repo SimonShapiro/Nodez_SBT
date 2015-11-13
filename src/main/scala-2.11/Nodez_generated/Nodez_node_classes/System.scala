@@ -18,33 +18,6 @@ case class System(
              version: String = null,
              description : String = null) extends archNodes {
 
-  def this() {
-    this("")
-  }
-
-  def <-- (name: String, version: String = null) = {
-    println(version)
-  }
-
-  def fromJson(j: JsValue): System = {
-    val name = (j \ "name").get.toString
-    val version = try{
-      (j \ "properties" \ "version").get.toString
-    }
-    catch {
-      case exception: NoSuchElementException => null
-    }
-    val description = try{
-      (j \ "properties" \ "description").get.toString
-    }
-    catch {
-      case exception: NoSuchElementException => null
-    }
-//    val versionZ = (j \ "properties" \ "vesion").get
-//    val versionCL = version.getClass
-    new System(name, version, description)
-  }
-
   def CONNECTS(b: System): System_CONNECTS_System  = {
     val e = System_CONNECTS_System(name+"-[System_CONNECTS_System]->"+b.name, this, b)
     outboundEdges += e
@@ -74,8 +47,9 @@ case class System(
   }
   def toHashMap = {
     val properties = new mutable.HashMap[String, Any]
+    properties("_ID_") =  "System__" + name
+    properties("TYPE") = "System"
     properties("name") = name
-    properties("TYPE") = getClass.toString.split('.').last
     properties("version") = version
     properties("description") = description
     properties

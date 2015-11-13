@@ -27,8 +27,9 @@ case class DataSet(
   }
   def toHashMap = {
     val properties = new mutable.HashMap[String, Any]
+    properties("_ID_") =  "DataSet__" + name
+    properties("TYPE") = "DataSet"
     properties("name") = name
-    properties("TYPE") = getClass.toString.split('.').last
     properties("version") = version
     properties("description") = description
     properties

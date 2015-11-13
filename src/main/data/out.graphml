@@ -79,7 +79,7 @@
         <y:PolyLineEdge>
           <y:LineStyle type="line" width="1.0" color="#000000"/>
           <y:Arrows source="none" target="standard"/>
-          <y:EdgeLabel>PRODUCES</y:EdgeLabel>
+          <y:EdgeLabel></y:EdgeLabel>
           <y:BendStyle smoothed="false"/>
         </y:PolyLineEdge>
       </data>
@@ -88,7 +88,7 @@
         <y:PolyLineEdge>
           <y:LineStyle type="line" width="1.0" color="#ff0000"/>
           <y:Arrows source="none" target="standard"/>
-          <y:EdgeLabel>CONSUMED BY</y:EdgeLabel>
+          <y:EdgeLabel></y:EdgeLabel>
           <y:BendStyle smoothed="false"/>
         </y:PolyLineEdge>
       </data>
@@ -97,7 +97,7 @@
         <y:PolyLineEdge>
           <y:LineStyle type="line" width="1.0" color="#000000"/>
           <y:Arrows source="none" target="standard"/>
-          <y:EdgeLabel>PRODUCES</y:EdgeLabel>
+          <y:EdgeLabel></y:EdgeLabel>
           <y:BendStyle smoothed="false"/>
         </y:PolyLineEdge>
       </data>
@@ -106,7 +106,16 @@
         <y:PolyLineEdge>
           <y:LineStyle type="line" width="1.0" color="#000000"/>
           <y:Arrows source="none" target="standard"/>
-          <y:EdgeLabel>PRODUCES</y:EdgeLabel>
+          <y:EdgeLabel></y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge><edge id="@-459107729" source="@1534048611" target="@219609894">
+      <data key="d1">
+        <y:PolyLineEdge>
+          <y:LineStyle type="line" width="1.0" color="#000000"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:EdgeLabel></y:EdgeLabel>
           <y:BendStyle smoothed="false"/>
         </y:PolyLineEdge>
       </data>
@@ -115,7 +124,7 @@
         <y:PolyLineEdge>
           <y:LineStyle type="line" width="1.0" color="#000000"/>
           <y:Arrows source="none" target="standard"/>
-          <y:EdgeLabel>PRODUCES</y:EdgeLabel>
+          <y:EdgeLabel></y:EdgeLabel>
           <y:BendStyle smoothed="false"/>
         </y:PolyLineEdge>
       </data>
@@ -124,16 +133,7 @@
         <y:PolyLineEdge>
           <y:LineStyle type="line" width="1.0" color="#ff0000"/>
           <y:Arrows source="none" target="standard"/>
-          <y:EdgeLabel>CONSUMED BY</y:EdgeLabel>
-          <y:BendStyle smoothed="false"/>
-        </y:PolyLineEdge>
-      </data>
-    </edge><edge id="@-919775910" source="@219609894" target="@219609894">
-      <data key="d1">
-        <y:PolyLineEdge>
-          <y:LineStyle type="line" width="1.0" color="#000000"/>
-          <y:Arrows source="none" target="standard"/>
-          <y:EdgeLabel>CONNECTS</y:EdgeLabel>
+          <y:EdgeLabel></y:EdgeLabel>
           <y:BendStyle smoothed="false"/>
         </y:PolyLineEdge>
       </data>

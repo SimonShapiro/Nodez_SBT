@@ -40,18 +40,19 @@ case class Graph2YedGraphML(g: Graph, nodeGraphControls: HashMap[String, archNod
   }
 
   private def edge2YedGraphML(e: archEdges) = {
-    val reversed = if (edgeGraphControls.contains("edge direction reversed")) edgeGraphControls("edge direction reversed")(e) else (false,"")
+    val reversed = if (edgeGraphControls.contains("edge direction reversed")) edgeGraphControls("edge direction reversed")(e) else false
+    val label = if (edgeGraphControls.contains("edge label")) edgeGraphControls("edge label")(e) else "...>"
     val cCode = if (edgeGraphControls.contains("edge colour")) edgeGraphControls("edge colour")(e) else DEFAULT_COLOUR
     val eColour = getColourFromTable((cCode).toString)
     //is there coding to do the display in reverse on some items?
     <edge id={"@" + e.hashCode.toString}
-          source={if (reversed.asInstanceOf[(Boolean,String)]._1) "@" + e.toNode.hashCode.toString else "@" + e.fromNode.hashCode}
-          target={if (reversed.asInstanceOf[(Boolean,String)]._1) "@" + e.fromNode.hashCode.toString else "@" + e.toNode.hashCode}>
+          source={if (reversed.asInstanceOf[Boolean]) "@" + e.toNode.hashCode.toString else "@" + e.fromNode.hashCode}
+          target={if (reversed.asInstanceOf[Boolean]) "@" + e.fromNode.hashCode.toString else "@" + e.toNode.hashCode}>
       <data key="d1">
         <y:PolyLineEdge>
           <y:LineStyle type="line" width="1.0" color={eColour.toString}/>
           <y:Arrows source="none" target="standard"/>
-          <y:EdgeLabel>{if (reversed.asInstanceOf[(Boolean,String)]._1) reversed.asInstanceOf[(Boolean,String)]._2 else e.getClass.toString.split('.').last.split('_')(1)}</y:EdgeLabel>
+          <y:EdgeLabel>{label}</y:EdgeLabel>
           <y:BendStyle smoothed="false"/>
         </y:PolyLineEdge>
       </data>

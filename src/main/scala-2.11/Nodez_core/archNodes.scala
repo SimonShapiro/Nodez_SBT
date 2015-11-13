@@ -17,5 +17,8 @@ trait archNodes {
   def getTypeAndName = {
     "%s__%s".format(this.getClass.toString.split('.').last,this.name)
   }
-  def toHashMap: mutable.HashMap[String, Any]
+  def getType = {
+    this.getClass.toString.split('.').last
+  }
+  def toHashMap: mutable.HashMap[String, Any]  // the HashMap may have additional 'properties' to support persistence model
 }

@@ -3,10 +3,9 @@ package Nodez_core
 import java.io.File
 import java.util.{NoSuchElementException, Calendar}
 
-import Nodez_generated.Neo4j_edge_types.getNeo4jEdge
+import Nodez_generated.Neo4jIntegration.getNeo4jEdge
 import org.neo4j.graphdb.{Label, Transaction}
 import org.neo4j.graphdb.factory.GraphDatabaseFactory
-import play.api.libs.json.JsValue
 
 import scala.collection.mutable
 
@@ -51,7 +50,10 @@ case class Graph2Neo4j (g: Graph) {
       val toNode   = graphDb.getNodeById(toNodeId)
       val edgeType = e._2.name.split('_')(1)
       val neo4jEdge = getNeo4jEdge().Type(edgeType)
-      val edge = fromNode.createRelationshipTo(toNode,getNeo4jEdge().Type(e._2.name.split('_')(1)))
+      val edge = fromNode.createRelationshipTo(toNode,neo4jEdge)
+      e._2.toHashMap.foreach(p => {
+        if (p._2 != null) edge.setProperty(p._1,p._2)
+      })
 //      val relationship = firstNode.createRelationshipTo(secondNode, KNOWS)
       println(e._2.fromNode,e._2.toNode)
     })

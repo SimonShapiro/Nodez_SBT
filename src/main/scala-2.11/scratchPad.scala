@@ -27,9 +27,18 @@ object scratchPad extends App {
                               }
   edgeGraphControls("edge direction reversed") = {(e: archEdges) =>
                               e.getClass.toString.split('.').last match {
-                                case "System_CONSUMES_DataSet" => (true,"CONSUMED BY")
-                                case _                         => (false,null)
+                                case "System_CONSUMES_DataSet" => true
+                                case _                         => false
                                 }
+                              }
+
+  edgeGraphControls("edge label") = {( e: archEdges) =>
+                              e.getClass.toString.split('.').last match {
+                                case "System_CONSUMES_DataSet" => ""
+                                case "System_CONNECTS_System" => ""
+                                case "System_PRODUCES_DataSet" => ""
+                                case _ => e.name.split('_')(1)
+                                  }
                               }
 
   val nodeGraphControls = new mutable.HashMap[String, archNodes => Any]

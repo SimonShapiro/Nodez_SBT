@@ -45,17 +45,16 @@ class Model() {
     model <= capplanOut
     model <= capplanOutAdHoc
 
-    model <=> (excel PRODUCES capplanInTemplate)
+    model <=> (excel PRODUCES capplanInTemplate).WITH (10)
     model <=> (optimus PRODUCES capplanIn)
     model <=> (cyrus CONSUMES capplanIn)
     model <=> (cyrus CONSUMES capplanInTemplate)
     model <=> (cyrus PRODUCES capplanOut)
     model <=> (cyrus PRODUCES capplanOutAdHoc)
-//    model <=> (cyrus CONNECTS cyrus)
+    model <=> (optimus CONNECTS cyrus)
 
   println(optimus)
-//  println(optimus.toJson.getClass)
-//  val cl = System() fromJson optimus.toJson
-  val ar = System() <-- (version = "fred", name = "bob")
-//  println(cl)
+
+//  val ar = System() <-- (version = "fred", name = "bob")     // !!! RE-INTRODUCE THIS CONSTRUCTOR
+
 }

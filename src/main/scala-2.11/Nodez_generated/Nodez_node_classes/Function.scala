@@ -26,17 +26,11 @@ case class Function(
     """
       .stripMargin.format(name)
   }
-  def toJson: JsValue = {
-    Json.parse("""{
-                 |    "TYPE" : "Function",
-                 |    "name" : "%s"
-                 |}
-               """.stripMargin.format(name))
-  }
   def toHashMap = {
     val properties = new mutable.HashMap[String, Any]
+    properties("_ID_") =  "Function__" + name
+    properties("TYPE") = "Function"
     properties("name") = name
-    properties("TYPE") = getClass.toString.split('.').last
     properties
   }
 }

@@ -1,4 +1,4 @@
-package Nodez_generated.Neo4j_edge_types
+package Nodez_generated.Neo4jIntegration
 
 import org.neo4j.graphdb.RelationshipType
 
